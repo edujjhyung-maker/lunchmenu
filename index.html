@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>냠냠! 오늘의 급식 알리미 🍱</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- 구글 폰트: 주아(Jua)체 불러오기 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- 상단 헤더 (날짜 선택 기능 추가) -->
+        <header>
+            <div class="character-avatar">🎒✨</div>
+            <h1>냠냠 오늘의 급식</h1>
+            <div class="date-selector-wrap">
+                <input type="date" id="date-picker" class="date-picker">
+            </div>
+        </header>
+
+        <main>
+            <!-- 오늘의 식단 카드 -->
+            <section class="card meal-card">
+                <h2>🍱 식단표</h2>
+                <div id="loading-msg" class="status-msg">보글보글 맛있는 급식 정보를 가져오는 중... 🍳</div>
+                <ul id="meal-list" class="meal-list"></ul>
+            </section>
+
+            <!-- 고기/디저트 추가 선택 공간 -->
+            <section class="serving-box">
+                <p class="section-title">😋 좋아하는 반찬 더 받기!</p>
+                <p class="data-note">💡 데이터의 비밀: 교육청 데이터에는 반찬별 열량이 없어서, 고기는 약 150kcal, 디저트는 약 100kcal로 어림잡아 계산했어요!</p>
+                
+                <div id="favorite-items-list" class="favorite-items">
+                    <!-- 자바스크립트에서 고기/디저트 메뉴를 찾아 여기에 띄워줍니다 -->
+                </div>
+            </section>
+
+            <!-- 영양 과다 섭취 주의 안내 메시지 공간 -->
+            <section id="warning-card" class="warning-card hidden">
+                <div class="warning-header">
+                    <span>⚠️</span>
+                    <h3>튼튼 건강 주의보!</h3>
+                </div>
+                <p id="warning-text">과도한 영양소 섭취를 주의해야 해요.</p>
+            </section>
+
+            <!-- 영양 및 열량 정보 카드 -->
+            <section class="info-grid">
+                <div class="card info-card calorie-box">
+                    <h2>⚡ 열량 (에너지)</h2>
+                    <div class="calorie-value">
+                        <span id="cal-num">0</span> <span class="unit">kcal</span>
+                    </div>
+                </div>
+
+                <div class="card info-card nutrition-box">
+                    <h2>🌾 영양성분</h2>
+                    <div class="nut-row"><span>탄수화물:</span> <span><strong id="nut-carbo">0</strong> g</span></div>
+                    <div class="nut-row"><span>단백질:</span> <span><strong id="nut-protein">0</strong> g</span></div>
+                    <div class="nut-row"><span>지방:</span> <span><strong id="nut-fat">0</strong> g</span></div>
+                </div>
+            </section>
+
+            <!-- 알레르기 안내 카드 -->
+            <section class="card allergy-card">
+                <h2>🛑 알레르기 조심판</h2>
+                <p id="allergy-summary" class="allergy-summary">급식을 불러오면 알레르기 정보가 표시돼요.</p>
+                <div class="allergy-legend">
+                    [알레르기 번호 안내] 1.난류 2.우유 3.메밀 4.땅콩 5.대두 6.밀 7.고등어 8.게 9.새우 10.돼지고기 11.복숭아 12.토마토 13.아황산류 14.호두 15.닭고기 16.쇠고기 17.오징어 18.조개류 19.잣
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>골고루 알맞게 먹고 튼튼한 어린이가 됩시다! 💪🌟</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
