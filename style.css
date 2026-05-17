@@ -5,8 +5,6 @@
     --accent-color: #FF6B6B;
     --text-color: #4A4A4A;
     --card-bg: #FFFFFF;
-    --warning-bg: #FFEBEB;
-    --warning-border: #FFB3B3;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Jua', sans-serif; }
@@ -31,70 +29,64 @@ body {
     border: 4px solid var(--main-light);
 }
 
-header { text-align: center; margin-bottom: 22px; }
-.character-avatar { font-size: 3.2rem; margin-bottom: 4px; animation: bounceEffect 2s infinite ease-in-out; }
+header { text-align: center; margin-bottom: 20px; }
+.character-avatar { font-size: 3rem; margin-bottom: 4px; animation: bounceEffect 2s infinite ease-in-out; }
 @keyframes bounceEffect { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
-header h1 { font-size: 1.9rem; color: var(--main-color); text-shadow: 2px 2px 0px #FFF3E0; margin-bottom: 10px; }
+header h1 { font-size: 1.8rem; color: var(--main-color); margin-bottom: 10px; }
 
-/* 날짜 선택기 스타일 */
 .date-picker {
-    background-color: var(--main-light);
-    color: #D35400;
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-size: 1.2rem;
-    border: 2px solid #FFD8A8;
-    cursor: pointer;
-    outline: none;
-    text-align: center;
+    background-color: #FFFDF7; color: #D35400; padding: 8px 16px;
+    border-radius: 20px; font-size: 1.1rem; border: 2px solid #FFD8A8;
+    cursor: pointer; outline: none; text-align: center;
 }
 
-/* 반찬 추가 선택 영역 */
-.serving-box {
-    background: #EBF7FF;
-    border: 2px dashed #74C0FC;
-    border-radius: 20px;
-    padding: 18px;
-    margin-bottom: 18px;
+/* 피드백 말풍선 디자인 */
+.feedback-card {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
 }
-.section-title { font-size: 1.25rem; margin-bottom: 6px; color: #1C7ED6; text-align: center; }
-.data-note { font-size: 0.85rem; color: #74C0FC; text-align: center; margin-bottom: 15px; word-break: keep-all; line-height: 1.3; }
+.feedback-avatar { font-size: 2.5rem; }
+.feedback-bubble {
+    background-color: #EBF7FF; border: 2px solid #A5D8FF; border-radius: 20px;
+    padding: 12px 18px; position: relative; width: 100%;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+.feedback-bubble::before {
+    content: ''; position: absolute; left: -10px; top: 15px;
+    border-width: 10px 12px 10px 0; border-style: solid;
+    border-color: transparent #A5D8FF transparent transparent;
+}
+.feedback-bubble::after {
+    content: ''; position: absolute; left: -7px; top: 17px;
+    border-width: 8px 10px 8px 0; border-style: solid;
+    border-color: transparent #EBF7FF transparent transparent;
+}
+#feedback-text { font-size: 1.1rem; color: #1C7ED6; line-height: 1.4; word-break: keep-all; }
 
-.favorite-items { display: flex; flex-direction: column; gap: 10px; }
-.fav-item-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #FFFFFF;
-    padding: 10px 15px;
-    border-radius: 12px;
-    border: 1px solid #A5D8FF;
+/* 공통 카드 스타일 */
+.card { background: #FFFDF7; border: 2px solid #FFEAA7; border-radius: 22px; padding: 18px; margin-bottom: 18px; }
+.card h2 { font-size: 1.3rem; color: var(--main-color); margin-bottom: 8px; border-bottom: 2px dashed #FFEAA7; padding-bottom: 6px; }
+.data-note { font-size: 0.9rem; color: #868E96; text-align: center; margin-bottom: 12px; }
+.status-msg { font-size: 1rem; color: #888; text-align: center; padding: 20px 0; }
+
+/* 인터랙티브 메뉴 리스트 */
+.interactive-meal-list { display: flex; flex-direction: column; gap: 10px; }
+.meal-row {
+    display: flex; justify-content: space-between; align-items: center;
+    background: #FFFFFF; padding: 10px 12px; border-radius: 12px;
+    border: 1px solid #E9ECEF; box-shadow: 0 2px 4px rgba(0,0,0,0.02);
 }
-.fav-name { font-size: 1.15rem; color: #34495E; max-width: 60%; word-break: keep-all; }
-.fav-controls { display: flex; align-items: center; gap: 10px; }
+.meal-row.active { border-color: var(--main-color); background-color: #FFF9E6; }
+.meal-name { font-size: 1.15rem; color: #34495E; flex: 1; word-break: keep-all; line-height: 1.3; margin-right: 10px; }
+.meal-controls { display: flex; align-items: center; gap: 8px; }
 .btn-qty {
     background: #FF9F43; color: white; border: none; border-radius: 50%;
-    width: 28px; height: 28px; font-size: 1.2rem; cursor: pointer;
-    display: flex; justify-content: center; align-items: center;
+    width: 26px; height: 26px; font-size: 1.2rem; cursor: pointer;
+    display: flex; justify-content: center; align-items: center; line-height: 1;
 }
 .btn-qty:disabled { background: #DEE2E6; cursor: not-allowed; }
-.qty-display { font-size: 1.2rem; color: #D35400; width: 20px; text-align: center; }
-.empty-fav { text-align: center; color: #868E96; font-size: 1rem; padding: 10px; }
+.qty-display { font-size: 1.2rem; color: #D35400; width: 16px; text-align: center; font-weight: bold; }
 
-/* 공통 카드 및 경고창 스타일 */
-.warning-card { background-color: var(--warning-bg); border: 2px solid var(--warning-border); border-radius: 20px; padding: 15px; margin-bottom: 18px; color: #C92A2A; animation: shakeEffect 0.4s ease-in-out; word-break: keep-all; }
-.warning-header { display: flex; align-items: center; gap: 6px; font-size: 1.15rem; margin-bottom: 6px; }
-#warning-text { font-size: 1rem; line-height: 1.5; }
-@keyframes shakeEffect { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
-.hidden { display: none !important; }
-
-.card { background: #FFFDF7; border: 2px solid #FFEAA7; border-radius: 22px; padding: 18px; margin-bottom: 18px; }
-.card h2 { font-size: 1.35rem; color: var(--main-color); margin-bottom: 12px; border-bottom: 2px dashed #FFEAA7; padding-bottom: 6px; }
-.status-msg { font-size: 1rem; color: #888; text-align: center; padding: 20px 0; }
-.meal-list { list-style: none; font-size: 1.25rem; line-height: 1.8; }
-.meal-list li { position: relative; padding-left: 28px; margin-bottom: 6px; word-break: keep-all; }
-.meal-list li::before { content: "🎈"; position: absolute; left: 2px; top: -1px; }
-
+/* 영양 정보 그리드 */
 .info-grid { display: flex; gap: 12px; margin-bottom: 18px; }
 .info-card { flex: 1; margin-bottom: 0; background: #FAFAFA; border-color: #E9ECEF; }
 .info-card h2 { font-size: 1.15rem; color: #495057; border-bottom: 2px dashed #E9ECEF; }
@@ -103,6 +95,5 @@ header h1 { font-size: 1.9rem; color: var(--main-color); text-shadow: 2px 2px 0p
 .nut-row { font-size: 1.05rem; margin-bottom: 6px; display: flex; justify-content: space-between; }
 
 .allergy-card h2 { color: #E67E22; border-color: #FCD34D; }
-.allergy-summary { font-size: 1.05rem; background: #FFFFFF; padding: 10px; border-radius: 12px; border: 1px solid #FFEAA7; margin-bottom: 10px; color: #D35400; line-height: 1.4; word-break: keep-all; }
-.allergy-legend { font-size: 0.78rem; color: #868E96; line-height: 1.5; word-break: keep-all; }
-footer { text-align: center; font-size: 1.05rem; color: var(--main-color); margin-top: 15px; }
+.allergy-summary { font-size: 1rem; color: #D35400; line-height: 1.4; word-break: keep-all; }
+footer { text-align: center; font-size: 1rem; color: var(--main-color); margin-top: 15px; }
